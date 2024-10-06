@@ -2,7 +2,7 @@ const Pelicula = require("../models/peliculas")
 
 const getPelis = async (req, res, next) => {
   try {
-      const pelis = await Pelicula.find();
+      const pelis = await Pelicula.find().populate("plataforma");
       return res.status(200).json(pelis);
   } catch (error) {
     return res.status(400).json("Error en la solicitud");
@@ -11,7 +11,7 @@ const getPelis = async (req, res, next) => {
 const getPeliByValoracion = async (req, res, next) => {
   try {
     const {valoracion} = req.params;
-    const pelis = await Pelicula.find({valoracion: {$gt: valoracion}});
+    const pelis = await Pelicula.find({valoracion: {$gte: valoracion}}); //Esto es lt/e y gt/e q son menmay/igual q
     return res.status(200).json(pelis);
   } catch (error) {
     return res.status(400).json("Error en la solicitud");
@@ -26,6 +26,18 @@ const getPeliByCategory = async (req, res, next) => {
     return res.status(400).json("Error en la solicitud");
   }
 }
+
+const getPeliByDirector = async (req, res, next) => {
+  try {
+    const { director } = req.params;
+    const peli = await Pelicula.find({director});
+    return res.statuts(200).json(pelis);
+    
+  } catch (error) {
+    return res.status(400).json("Error en la solicitud");
+  }
+}
+
 const getPeliById = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -38,13 +50,12 @@ const getPeliById = async (req, res, next) => {
 
 const postPeli = async (req, res, next) => {
   try {
-    //ESTOY AQUI MINUTO 55 APROX
     const newPeli = new Pelicula(req.body);
     const peliSaved = await newPeli.save();
     return res.status(201).json(peliSaved);
   } catch (error) {
     //He quitao el texto de aqui
-    return res.status(400).json(error);
+    return res.status(400).json("Error");
   }
 }
 
@@ -80,4 +91,5 @@ module.exports = {
   postPeli,
   updatePeli,
   deletePeli,
+  getPeliByDirector,
 }

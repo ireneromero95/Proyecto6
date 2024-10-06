@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const peliSchema = new mongoose.Schema({
   nombre: {type: String, required: true},
   imagen: {type: String, required: true},
+  director: {type: String, required: true},
   categoria: {
     type: String,
     required: true, 
@@ -14,7 +15,7 @@ const peliSchema = new mongoose.Schema({
       "Comedia", 
       "Drama" ]},
   valoracion: {type: Number, required: true},
-
+  plataforma: [{type: mongoose.Types.ObjectId, required:false, ref:"plataformas",}] 
 }, {
   timestamps:true,
   collection: "peliculas"
