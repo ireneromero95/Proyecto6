@@ -43,3 +43,7 @@ Para ejecutar el código escribir:
 npm run dev ó npm run start
 
 Para reiniciar la información ejecutar npm run seed
+
+## Información del env
+
+DB_URL=mongodb+srv://proyecto6:2duTyefZqYV3rrfn@cluster0.jm8tl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
