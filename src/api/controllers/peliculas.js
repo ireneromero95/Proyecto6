@@ -2,7 +2,7 @@ const Pelicula = require('../models/peliculas');
 
 const getPelis = async (req, res, next) => {
   try {
-    const pelis = await Pelicula.find().populate('plataforma');
+    const pelis = await Pelicula.find().populate('plataformas');
     return res.status(200).json(pelis);
   } catch (error) {
     return res.status(400).json('Error en la solicitud');
@@ -49,7 +49,18 @@ const getPeliById = async (req, res, next) => {
 
 const postPeli = async (req, res, next) => {
   try {
-    const newPeli = new Pelicula(req.body);
+    const { plataformas } = req.body;
+    const plataformasUnicas = [...new Set(plataformas)].map((id) =>
+      mongoose.Types.ObjectId(id)
+    );
+
+    console.log('Plataformas únicas:', plataformasUnicas);
+    //const newPeli = new Pelicula(req.body);
+    console.log('hasta aquie bien');
+    const newPeli = new Pelicula({
+      ...req.body, // Usamos todo el contenido de req.body, y luego reemplazamos 'plataforma'
+      plataformas: plataformasUnicas // Aseguramos que no haya duplicados en el array
+    });
 
     const peliDuplicated = await Pelicula.findOne({
       nombre: req.body.nombre,
@@ -58,9 +69,13 @@ const postPeli = async (req, res, next) => {
     if (peliDuplicated) {
       return res.status(400).json('Esta película ya existe');
     }
+
+    console.log(newPeli);
     const peliSaved = await newPeli.save();
+    console.log(peliSaved);
     return res.status(201).json(peliSaved);
   } catch (error) {
+    console.log(error);
     //He quitao el texto de aqui
     return res.status(400).json('Esta fallando todo');
   }

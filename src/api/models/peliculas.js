@@ -1,26 +1,33 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const peliSchema = new mongoose.Schema({
-  nombre: {type: String, required: true},
-  imagen: {type: String, required: true},
-  director: {type: String, required: true},
-  categoria: {
-    type: String,
-    required: true, 
-    enum: [
-      "Romance", 
-      "Terror", 
-      "Ciencia Ficción", 
-      "Acción",
-      "Comedia", 
-      "Drama" ]},
-  valoracion: {type: Number, required: true},
-  plataforma: [{type: mongoose.Types.ObjectId, required:false, ref:"plataformas",}] 
-}, {
-  timestamps:true,
-  collection: "peliculas"
-})
+const peliSchema = new mongoose.Schema(
+  {
+    nombre: { type: String, required: true },
+    imagen: { type: String, required: true },
+    director: { type: String, required: true },
+    categoria: {
+      type: String,
+      required: true,
+      enum: [
+        'Romance',
+        'Terror',
+        'Ciencia Ficción',
+        'Acción',
+        'Comedia',
+        'Drama'
+      ]
+    },
+    valoracion: { type: Number, required: true },
+    plataformas: [
+      { type: mongoose.Types.ObjectId, required: false, ref: 'plataformas' }
+    ]
+  },
+  {
+    timestamps: true,
+    collection: 'peliculas'
+  }
+);
 
-const Pelicula = mongoose.model("peliculas", peliSchema, "peliculas")
+const Pelicula = mongoose.model('peliculas', peliSchema, 'peliculas');
 
-module.exports = Pelicula
+module.exports = Pelicula;
