@@ -55,11 +55,10 @@ const postPeli = async (req, res, next) => {
     );
 
     console.log('Plataformas únicas:', plataformasUnicas);
-    //const newPeli = new Pelicula(req.body);
     console.log('hasta aquie bien');
     const newPeli = new Pelicula({
-      ...req.body, // Usamos todo el contenido de req.body, y luego reemplazamos 'plataforma'
-      plataformas: plataformasUnicas // Aseguramos que no haya duplicados en el array
+      ...req.body,
+      plataformas: plataformasUnicas
     });
 
     const peliDuplicated = await Pelicula.findOne({
