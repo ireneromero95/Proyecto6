@@ -2,7 +2,7 @@ const Pelicula = require('../models/peliculas');
 
 const getPelis = async (req, res, next) => {
   try {
-    const pelis = await Pelicula.find().populate('plataformas');
+    const pelis = await Pelicula.find();
     return res.status(200).json(pelis);
   } catch (error) {
     return res.status(400).json('Error en la solicitud');
