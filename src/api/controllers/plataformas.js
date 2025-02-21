@@ -21,7 +21,14 @@ const getPlataformaById = async (req, res, next) => {
 
 const postPlataforma = async (req, res, next) => {
   try {
-    const newPlataforma = new Plataforma(req.body);
+    const { peliculas } = req.body;
+    const peliculasUnicas = [...new Set(peliculas)].map((id) =>
+      mongoose.Types.ObjectId(id)
+    );
+    const newPlataforma = new Plataforma({
+      ...req.body,
+      peliculas: peliculasUnicas
+    });
     const plataformaSaved = await newPlataforma.save();
     return res.status(201).json(plataformaSaved);
   } catch (error) {
@@ -33,26 +40,33 @@ const postPlataforma = async (req, res, next) => {
 const updatePlataforma = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const oldPlataforma = await Plataforma.findById(id); //Haciendo un get de la plataforma antes de modificarla
-    const newPlataforma = new Plataforma(req.body);
-    newPlataforma._id = id;
-    newPlataforma.peliculas = [
+    const oldPlataforma = await Plataforma.findById(id);
+
+    const peliculasUnicas = [
       ...oldPlataforma.peliculas,
-      ...req.body.peliculas
+      ...req.body.peliculas.filter(
+        (pelicula) => !oldPlataforma.peliculas.includes(pelicula)
+      )
     ];
-    //El nuevo array van a ser todas las peliculas que había antes más las nuevas
+
+    const updateData = {
+      ...req.body,
+      peliculas: peliculasUnicas
+    };
+
     const plataformaUpdated = await Plataforma.findByIdAndUpdate(
       id,
-      newPlataforma,
-      {
-        new: true
-      }
+      updateData,
+      { new: true }
     );
+
     return res.status(200).json(plataformaUpdated);
   } catch (error) {
+    console.error(error);
     return res.status(400).json('Error en la solicitud');
   }
 };
+
 const deletePlataforma = async (req, res, next) => {
   try {
     const { id } = req.params;

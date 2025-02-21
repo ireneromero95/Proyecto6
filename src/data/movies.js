@@ -5,8 +5,7 @@ const movies = [
       'https://www.lahiguera.net/cinemania/pelicula/10297/barbie-cartel-11222.jpg',
     director: 'Greta Gerwig',
     categoria: 'Comedia',
-    valoracion: 3,
-    plataformas: '67014a99b227237354143a47'
+    valoracion: 3
   },
   {
     nombre: '2042',
@@ -14,8 +13,7 @@ const movies = [
       'https://cinemacatalunya.reservaentradas.com/cinemacatalunya/obj/LCinesD_dat/eventos/JPG0007y.jpg',
     director: 'Wong Kar Wai',
     categoria: 'Romance',
-    valoracion: 5,
-    plataformas: ['67014a99b227237354143a47', '67014a99b227237354143a47']
+    valoracion: 5
   },
   {
     nombre: 'Kill Bill',
@@ -23,8 +21,7 @@ const movies = [
       'https://static.posters.cz/image/1300/posters/kill-bill-vol-1-i97652.jpg',
     director: 'Tarantino',
     categoria: 'Drama',
-    valoracion: 4,
-    plataformas: '67014a99b227237354143a47'
+    valoracion: 4
   },
   {
     nombre: 'Pulp Fiction',
@@ -32,8 +29,7 @@ const movies = [
       'https://m.media-amazon.com/images/M/MV5BYTViYTE3ZGQtNDBlMC00ZTAyLTkyODMtZGRiZDg0MjA2YThkXkEyXkFqcGc@._V1_.jpg',
     director: 'Tarantino',
     categoria: 'Drama',
-    valoracion: 4,
-    plataformas: '67014a99b227237354143a47'
+    valoracion: 4
   },
   {
     nombre: 'Happy Together',
@@ -50,8 +46,7 @@ const movies = [
       'https://cinesembajadores.es/wp-content/uploads/2021/05/Chungking_express_poster.jpg',
     director: 'Wong Kar Wai',
     categoria: 'Romance',
-    valoracion: 4,
-    plataformas: '67014a99b227237354143a47'
+    valoracion: 4
   },
   {
     nombre: 'In the mood for love',
@@ -59,16 +54,14 @@ const movies = [
       'https://cinemacatalunya.reservaentradas.com/cinemacatalunya/obj/LCinesD_dat/eventos/JPG0007y.jpg',
     director: 'Wong Kar Wai',
     categoria: 'Romance',
-    valoracion: 5,
-    plataformas: '67014a99b227237354143a47'
+    valoracion: 5
   },
   {
     nombre: 'Volver',
     imagen: 'https://pics.filmaffinity.com/Volver-432380780-large.jpg',
     director: 'Pedro Almodóvar',
     categoria: 'Drama',
-    valoracion: 5,
-    plataformas: '67014a99b227237354143a47'
+    valoracion: 5
   },
   {
     nombre: 'Mujeres al borde de un ataque de nervios',
@@ -76,16 +69,14 @@ const movies = [
       'https://pics.filmaffinity.com/Mujeres_al_borde_de_un_ataque_de_nervios-543225301-large.jpg',
     director: 'Pedro Almodóvar',
     categoria: 'Drama',
-    valoracion: 4,
-    plataformas: '67014a99b227237354143a47'
+    valoracion: 4
   },
   {
     nombre: 'REC',
     imagen: 'https://pics.filmaffinity.com/AaREC-273731015-large.jpg',
     director: 'Jaume Balagueró',
     categoria: 'Terror',
-    valoracion: 4,
-    plataformas: '6702d56ebcbb3ec9e0e3965f'
+    valoracion: 4
   }
 ];
 

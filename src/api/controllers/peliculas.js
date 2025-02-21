@@ -49,16 +49,8 @@ const getPeliById = async (req, res, next) => {
 
 const postPeli = async (req, res, next) => {
   try {
-    const { plataformas } = req.body;
-    const plataformasUnicas = [...new Set(plataformas)].map((id) =>
-      mongoose.Types.ObjectId(id)
-    );
-
-    console.log('Plataformas únicas:', plataformasUnicas);
-    console.log('hasta aquie bien');
     const newPeli = new Pelicula({
-      ...req.body,
-      plataformas: plataformasUnicas
+      ...req.body
     });
 
     const peliDuplicated = await Pelicula.findOne({

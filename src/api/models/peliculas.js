@@ -17,10 +17,7 @@ const peliSchema = new mongoose.Schema(
         'Drama'
       ]
     },
-    valoracion: { type: Number, required: true },
-    plataformas: [
-      { type: mongoose.Types.ObjectId, required: false, ref: 'plataformas' }
-    ]
+    valoracion: { type: Number, required: true }
   },
   {
     timestamps: true,
